@@ -140,6 +140,9 @@ func (h *Handler) ChangeAccount(c echo.Context) error {
 	if len(request.Name) == 0 {
 		return c.String(http.StatusBadRequest, "empty name")
 	}
+	if len(request.NewName) == 0 {
+		return c.String(http.StatusBadRequest, "empty new name")
+	}
 	h.guard.RLock()
 
 	account, ok := h.accounts[request.Name]

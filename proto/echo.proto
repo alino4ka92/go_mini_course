@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option go_package = "awesomeProject/proto";
+
+package proto;
+
+
+// The greeting service definition.
+service Account {
+  rpc Get (GetAccountRequest) returns (GetAccountReply) {}
+  rpc Create (CreateAccountRequest) returns (Empty) {}
+  rpc ChangeAmount (PatchAccountRequest) returns (Empty) {}
+  rpc ChangeName (ChangeAccountRequest) returns (Empty) {}
+  rpc Delete (DeleteAccountRequest) returns (Empty) {}
+}
+
+message GetAccountRequest {
+  string name = 1;
+}
+
+message CreateAccountRequest {
+  string name = 1;
+  int32 amount = 2;
+}
+
+message PatchAccountRequest {
+  string name = 1;
+  int32 amount = 2;
+}
+
+message ChangeAccountRequest {
+  string name = 1;
+  string new_name = 2;
+}
+
+message DeleteAccountRequest {
+  string name = 1;
+  string new_name = 2;
+}
+
+message GetAccountReply {
+  string name = 1;
+  int32 amount = 2;
+}
+
+message Empty {
+
+}
